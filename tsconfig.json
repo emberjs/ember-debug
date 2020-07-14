@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    { "path": "./packages/ember-debug" },
+    { "path": "./packages/ember-debug-global" }
+  ]
+}

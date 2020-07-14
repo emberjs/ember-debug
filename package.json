@@ -1,0 +1,28 @@
+{
+  "homepage": "https://emberjs.com/",
+  "bugs": {
+    "url": "https://github.com/emberjs/ember-debug/issues"
+  },
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emberjs/ember-debug.git"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "start": "tsc --build --watch",
+    "clean": "tsc --build --clean"
+  },
+  "devDependencies": {
+    "typescript": "~3.9.6"
+  },
+  "engines": {
+    "node": "10.* || >= 12.*"
+  },
+  "volta": {
+    "node": "10.21.0",
+    "yarn": "1.22.4"
+  }
+}

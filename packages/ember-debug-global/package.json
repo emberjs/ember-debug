@@ -1,0 +1,30 @@
+{
+  "name": "ember-debug-global",
+  "version": "0.0.0",
+  "description": "Install ember-debug to the $edb global variable",
+  "homepage": "https://emberjs.com/",
+  "bugs": {
+    "url": "https://github.com/emberjs/ember-debug/issues"
+  },
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emberjs/ember-debug.git"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "start": "tsc --build --watch",
+    "clean": "tsc --build --clean"
+  },
+  "devDependencies": {
+    "ember-debug": "*",
+    "typescript": "*"
+  },
+  "engines": {
+    "node": "10.* || >= 12.*"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

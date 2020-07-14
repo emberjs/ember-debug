@@ -1,0 +1,33 @@
+{
+  "name": "ember-debug",
+  "version": "0.0.0",
+  "description": "A script for debugging Ember apps",
+  "homepage": "https://emberjs.com/",
+  "bugs": {
+    "url": "https://github.com/emberjs/ember-debug/issues"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emberjs/ember-debug.git"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "start": "tsc --build --watch",
+    "clean": "tsc --build --clean"
+  },
+  "devDependencies": {
+    "typescript": "*"
+  },
+  "engines": {
+    "node": "10.* || >= 12.*"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
