@@ -5,18 +5,30 @@
   },
   "license": "MIT",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emberjs/ember-debug.git"
   },
   "scripts": {
+    "build:webpack": "webpack",
+    "start:dev": "webpack-dev-server",
     "build": "tsc --build",
     "start": "tsc --build --watch",
     "clean": "tsc --build --clean"
   },
   "devDependencies": {
-    "typescript": "~3.9.6"
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "ts-loader": "^8.0.1",
+    "typescript": "~3.9.6",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "engines": {
     "node": "10.* || >= 12.*"
