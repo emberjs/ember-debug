@@ -15,7 +15,7 @@
   "scripts": {
     "build": "yarn build:webpack",
     "build:tsc": "tsc --build",
-    "build:webpack": "webpack",
+    "build:webpack": "webpack -p",
     "start": "yarn start:webpack",
     "start:tsc": "tsc --build --watch",
     "start:webpack": "webpack-dev-server",
