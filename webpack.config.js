@@ -3,36 +3,35 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
-  entry: './packages/ember-debug-global/src/index.ts',
+  entry: './bookmarklet.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
       {
-        test: /\.ts?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: {
+          projectReferences: true
+        }
       },
       {
-        test: /\.js?$/,
-        exclude: /node_modules/,
-        use: {
+        test: /\.js$/,
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env']
           }
-        },
       }
     ],
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: [ '.ts', '.js' ],
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'bookmarklet.js',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
     port: 9000
   },
