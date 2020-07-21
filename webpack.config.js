@@ -20,7 +20,7 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env']
           }
-      }
+        }
     ],
   },
   resolve: {
@@ -36,6 +36,9 @@ module.exports = {
     port: 9000
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      inject: false
+    })
   ]
 };

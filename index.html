@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Ember Debug</title>
+    <style type="text/css">
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      #bookmarklet {
+        background: #dedede;
+        border-radius: 5px;
+        padding: 2px 5px;
+        text-decoration: none;
+        color: #333333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Install</h1>
+
+    <p>To install the bookmarklet, drag the following link to your bookmarks toolbar.</p>
+
+    <p><a id="bookmarklet" href="javascript:alert('something went wrong');">$edb [DEV]</a></p>
+
+    <script>
+      (function() {
+        "use strict";
+
+        let src = new URL("./bookmarklet.js", document.baseURI).href;
+
+        let payload = `
+          javascript:(function(d, s) {
+            s = d.createElement("script");
+            s.setAttribute("src", ${JSON.stringify(src)});
+            d.head.appendChild(s);
+          })(document);
+        `;
+
+        let href = encodeURI(payload.trim().replace(/\s/g, ""));
+
+        document.getElementById("bookmarklet").setAttribute("href", href);
+      })();
+    </script>
+  </body>
+</html>
