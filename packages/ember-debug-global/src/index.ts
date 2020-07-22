@@ -6,26 +6,37 @@ interface GlobalEmberDebug extends EmberDebug {
   attach: typeof EmberDebug.attach;
 }
 
-const attach = EmberDebug.attach.bind(EmberDebug);
+if (Object.getOwnPropertyDescriptor(window, '$edb')) {
+  console.warn('Refusing to load ember-debug as a copy of it has already been loaded.');
+} else {
+  const attach = EmberDebug.attach.bind(EmberDebug);
 
-const attached = new WeakMap<GlobalEmber, GlobalEmberDebug | undefined>();
+  const attached = new WeakMap<GlobalEmber, GlobalEmberDebug | undefined>();
 
-Object.defineProperty(window, '$edb', {
-  get(): GlobalEmberDebug | undefined {
-    let { Ember } = (window as Global & Partial<GlobalContext>);
+  Object.defineProperty(window, '$edb', {
+    get(): GlobalEmberDebug | undefined {
+      let { Ember } = (window as Global & Partial<GlobalContext>);
 
-    if (Ember) {
-      if (!attached.has(Ember)) {
-        let edb = attach(window);
+      let edb: GlobalEmberDebug | undefined;
 
-        if (edb) {
-          let $edb = (edb as GlobalEmberDebug);
-          $edb.attach = attach;
-          attached.set(Ember, $edb);
+      if (Ember) {
+        edb = attached.get(Ember);
+
+        if (!edb) {
+          edb = attach(window) as GlobalEmberDebug | undefined;
+
+          if (edb) {
+            edb.attach = attach;
+            attached.set(Ember, edb);
+          }
         }
       }
 
-      return attached.get(Ember);
+      if (!edb) {
+        console.warn('Ember not detected, $edb is unavailable.');
+      }
+
+      return edb;
     }
-  }
-});
+  });
+}

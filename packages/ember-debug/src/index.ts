@@ -3,11 +3,11 @@ export interface GlobalContext {
 }
 
 export interface GlobalEmber {
-  version: string;
+  VERSION: string;
 }
 
 function hasEmber(context: unknown): context is GlobalContext {
-  return context && typeof (context as Partial<GlobalContext>).Ember?.version === 'string';
+  return context && typeof (context as Partial<GlobalContext>).Ember?.VERSION === 'string';
 }
 
 export default class EmberDebug {
@@ -24,6 +24,6 @@ export default class EmberDebug {
   }
 
   get emberVersion(): string {
-    return this.Ember.version;
+    return this.Ember.VERSION;
   }
 }
