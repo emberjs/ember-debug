@@ -1,0 +1,79 @@
+name: Super Rentals
+on:
+  pull_request: {}
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  ember-debug:
+    name: Build ember-debug
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Volta
+        uses: volta-cli/action@v1
+      - name: Install dependencies (yarn)
+        run: yarn install --non-interactive --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: ember-debug
+          path: dist
+
+  test:
+    name: Test (${{ matrix.scenario }})
+    needs: ember-debug
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/super-rentals
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          - default
+          - default-with-lockfile
+          - release
+          - beta
+          - canary
+          - lts-3.16
+          - lts-3.20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download ember-debug
+        uses: actions/download-artifact@v2
+        with:
+          name: ember-debug
+          path: dist
+      - name: Set up Volta
+        uses: volta-cli/action@v1
+      - name: Install dependencies (yarn)
+        if: matrix.scenario == 'default-with-lockfile'
+        run: yarn install --non-interactive --frozen-lockfile
+      - name: Install dependencies (yarn)
+        if: matrix.scenario != 'default-with-lockfile'
+        run: yarn install --non-interactive --no-lockfile
+      - name: Setup ember-try scenario
+        if: matrix.scenario != 'default' && matrix.scenario != 'default-with-lockfile'
+        run: >-
+          yarn ember try:one ember-${{ matrix.scenario }} --skip-cleanup ---
+          '[ -z "$EMBER_OPTIONAL_FEATURES" ] || echo "::set-env name=EMBER_OPTIONAL_FEATURES::$EMBER_OPTIONAL_FEATURES"'
+      - name: Build
+        run: yarn ember build --environment test
+      - name: Run test (ember-debug)
+        # Due to a bug in ember-cli, running `ember test` with `--path` doesn't set `EMBER_ENV=test`
+        # See https://github.com/ember-cli/ember-cli/issues/8922
+        run: EMBER_ENV=test yarn test:ember --filter ember-debug --path dist
+      - name: Run test (super-rentals)
+        # Due to a bug in ember-cli, running `ember test` with `--path` doesn't set `EMBER_ENV=test`
+        # See https://github.com/ember-cli/ember-cli/issues/8922
+        run: EMBER_ENV=test yarn test:ember --filter '!ember-debug' --path dist
