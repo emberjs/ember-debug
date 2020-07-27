@@ -1,0 +1,26 @@
+.addons-correct {
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: .25em;
+    color: darken($blue, 5);
+  }
+
+  h2 {
+    margin-bottom: .5em;
+  }
+
+  form {
+    max-width: 800px;
+    margin-bottom: $default-spacing;
+  }
+
+  button.cancel {
+    $background-color: #999;
+    background-color: $background-color;
+
+    &:hover {
+      background-color: darken($background-color, 20%);
+    }
+  }
+}

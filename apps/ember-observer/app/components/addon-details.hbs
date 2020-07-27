@@ -1,0 +1,30 @@
+{{#if this.showRanking}}
+  <span class="ranking">#{{this.addon.ranking}}</span>
+{{else}}
+  <ScoreDisplay @addon={{this.addon}} as |score|>
+    {{score}}
+  </ScoreDisplay>
+{{/if}}
+<div class="desc">
+  <LinkTo @route="addons.show" @model={{this.addon.name}} class="addon-link test-addon-name">
+    <span class="addon-name">
+      {{this.addon.name}}
+      {{#if this.addon.isDeprecated}}
+        <span class="notice">
+          (Deprecated)
+        </span>
+      {{/if}}
+    </span>
+    {{#if this.addon.isOfficial}}
+      <OfficialIcon />
+    {{/if}}
+    {{#if this.addon.isCliDependency}}
+      <DependencyIcon />
+    {{/if}}
+    <small>- {{this.addon.description}}</small>
+  </LinkTo>
+  <p>
+    <small><InlineCategoryList @categories={{this.addon.categories}} /></small>
+    <span class="last-updated">Last updated <RelativeTime @date={{this.addon.latestVersionDate}} /></span>
+  </p>
+</div>

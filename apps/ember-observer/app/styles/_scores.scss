@@ -1,0 +1,51 @@
+$score-font-size: 0.75em !default;
+$gray: #9f9f9f !default;
+$medium-gray: #999 !default;
+$low-color: #ff7e63 !default;
+$med-low-color: #fbab61 !default;
+$medium-color: #EDE217 !default;
+$med-high-color: #7ECF27 !default;
+$high-color: #28b36d !default;
+
+.score {
+  background-color: $gray;
+  color: white;
+  display: inline-block;
+  font-size: $score-font-size;
+  line-height: 1;
+  padding: .5rem .75rem;
+  border-radius: $base-border-radius;
+  font-weight: 700;
+}
+
+.score[data-score="0"]{
+  background-color: $medium-gray;
+}
+
+.score[data-score="1"], .score[data-score="2"] {
+  background-color: $low-color;
+}
+
+.score[data-score="3"], .score[data-score="4"] {
+  background-color: $med-low-color;
+}
+
+.score[data-score="5"], .score[data-score="6"] {
+  background-color: $medium-color;
+}
+
+.score[data-score="7"], .score[data-score="8"] {
+  background-color: $med-high-color;
+}
+
+.score[data-score="9"], .score[data-score="10"]{
+  background-color: $high-color;
+}
+
+.score.wip {
+  padding: 0.25rem;
+}
+
+.score.deprecated {
+  background-color: black;
+}
