@@ -1,0 +1,37 @@
+.footer {
+  $footer-background: $medium-gray;
+  $footer-color: $light-gray;
+  $footer-link-color: transparentize($footer-color, 0.6);
+  $footer-disclaimer-color: transparentize($footer-color, 0.6);
+
+  background: $footer-background;
+  float: left;
+  padding: ($base-spacing * 2) 3em;
+  width: 100%;
+
+  hr {
+    border: 1px solid transparentize($footer-disclaimer-color, 0.3);
+    margin: 0 auto $base-spacing;
+    width: 10em;
+  }
+
+  p {
+    color: $footer-disclaimer-color;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    margin: auto;
+    margin-bottom: 1em;
+    max-width: 35em;
+    text-align: center;
+
+    a {
+      color: tint($footer-link-color, 70%);
+    }
+  }
+
+  .sponsor {
+    img {
+      width: 130px;
+    }
+  }
+}

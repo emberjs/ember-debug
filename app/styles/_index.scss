@@ -1,0 +1,20 @@
+.route-index {
+
+  .top-addons {
+    border-top: 1px solid $light-gray;
+    padding-top: 1.5rem;
+  }
+
+  .top-addons, .new-addons, .recently-scored-addons {
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  .more {
+    font-weight: bold;
+    text-decoration: underline
+  }
+}

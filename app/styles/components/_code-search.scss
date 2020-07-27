@@ -1,0 +1,204 @@
+.code-search {
+  margin-bottom: 2rem;
+
+  h1 {
+    margin-bottom: .25rem;
+  }
+
+  .search-wrapper {
+
+    input {
+      margin: 0;
+    }
+
+    form {
+
+      @include media($medium-screen) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .search-wrapper-inner {
+        width: 100%;
+
+        @include media($medium-screen) {
+          flex: 1;
+          flex-basis: 80%;
+          order: 1;
+        }
+
+        position: relative;
+
+        .close-button {
+          position: absolute;
+          top: 50%;
+          right: 1rem;
+          margin-top: -1rem;
+          font-size: 2rem;
+          line-height: 1;
+          color: $light-gray;
+          background: none;
+          padding: 0;
+        }
+      }
+
+      button[type=submit] {
+        min-width: 100%;
+
+        @include media($medium-screen) {
+          min-width: 18%;
+          margin-left: 2%;
+          order: 2;
+        }
+      }
+
+      .search-actions {
+        width: 100%;
+        padding: 1rem 0;
+        margin-left: 0.25rem;
+
+        @include media($medium-screen) {
+          order: 3;
+          width: auto;
+          padding: 0.5rem 0;
+        }
+
+        input {
+          margin-right: 0.25rem;
+        }
+
+        label {
+          cursor: pointer;
+        }
+
+        .regex-help {
+          border-bottom: 1px dashed #999;
+          font-size: 90%;
+          margin-left: .5rem;
+        }
+      }
+    }
+  }
+
+  .result-details {
+    margin-top: 1rem;
+
+    h4 {
+      margin: .25rem 0;
+    }
+
+    h5 {
+      line-height: 2rem;
+    }
+
+  }
+
+  .result-controls {
+    padding: 0 .25rem;
+    border-bottom: 1px solid $light-gray;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+
+    .sort-controls {
+      .button-option {
+        margin-bottom: 0;
+      }
+    }
+
+    .filter-controls {
+      margin-bottom: .5rem;
+      min-height: 90px;
+
+      .filter-input {
+        width: 75%;
+        position: relative;
+
+        @include media($medium-screen) {
+          width: 25%;
+        }
+
+        input {
+          border: 1px solid $base-accent-color;
+          height: 36px;
+          font-size: 1.25rem;
+          width: 100%;
+          padding: .5rem;
+        }
+
+        .close-button {
+          color: $base-accent-color;
+          position: absolute;
+          top: 50%;
+          right: 0.5rem;
+          margin-top: -0.625rem;
+          font-size: 1.25rem;
+          line-height: 1;
+          background: none;
+          padding: 0;
+        }
+      }
+
+      .filter-results {
+        display: inline-block;
+        padding-top: 0.2rem;
+        font-style: italic;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .usage-count {
+    padding-left: 4rem;
+    margin-top: .5rem;
+    position: relative;
+
+    a {
+      cursor: pointer;
+    }
+
+    .view-more {
+      font-size: 1rem;
+    }
+  }
+
+  .usage {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 20px;
+    overflow-wrap: break-word;
+
+    .filename {
+      margin-left: 4px;
+      padding-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .line {
+      margin: 0;
+      padding: 1px 4px;
+      font-size: .9rem;
+      line-height: 1.6rem;
+      white-space: pre-wrap;
+
+      &:nth-child(even) {
+        background-color: #f7f7f7;
+      }
+
+      .match {
+        font-weight: bold;
+      }
+
+      .number {
+        padding-right: 1rem;
+      }
+    }
+  }
+
+  .view-more {
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
