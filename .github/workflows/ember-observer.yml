@@ -61,7 +61,7 @@ jobs:
       - name: Setup ember-try scenario
         if: matrix.scenario != 'ember-default'
         run: >-
-          yarn ember try:one ember-${{ matrix.scenario }} --skip-cleanup ---
+          ember try:one ember-${{ matrix.scenario }} --skip-cleanup ---
           '[ -z "$EMBER_OPTIONAL_FEATURES" ] || echo "::set-env name=EMBER_OPTIONAL_FEATURES::$EMBER_OPTIONAL_FEATURES"'
       - name: Build
         run: ember build --environment test
