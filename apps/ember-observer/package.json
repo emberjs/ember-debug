@@ -15,8 +15,7 @@
     "lint:hbs": "ember-template-lint .",
     "lint:js": "npx eslint ./*.js app config server tests",
     "start": "ember serve",
-    "test": "ember test",
-    "ember:try": "ember try:one"
+    "test": "ember test"
   },
   "devDependencies": {
     "@ember/jquery": "^1.1.0",
