@@ -15,7 +15,8 @@
     "lint:hbs": "ember-template-lint .",
     "lint:js": "npx eslint ./*.js app config server tests",
     "start": "ember serve",
-    "test": "ember test"
+    "test": "ember test",
+    "ember:try": "ember try:one"
   },
   "devDependencies": {
     "@ember/jquery": "^1.1.0",
@@ -84,9 +85,6 @@
   },
   "engines": {
     "node": "8.* || >= 10.*"
-  },
-  "volta": {
-    "extends": "../../package.json"
   },
   "ember": {
     "edition": "octane"

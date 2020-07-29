@@ -16,8 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up Volta
-        uses: volta-cli/action@v1
       - name: Install dependencies (yarn)
         run: yarn install --non-interactive --frozen-lockfile
       - name: Build
@@ -39,13 +37,13 @@ jobs:
       fail-fast: false
       matrix:
         scenario:
-          - ember-default
-          - ember-release
-          - ember-beta
-          - ember-canary
-          - ember-lts-2.12
-          - ember-lts-2.16
-          - ember-lts-2.18
+          - default
+          - release
+          - beta
+          - canary
+          - lts-2.12
+          - lts-2.16
+          - lts-2.18
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -54,22 +52,16 @@ jobs:
         with:
           name: ember-debug
           path: dist
-      - name: Set up Volta
-        uses: volta-cli/action@v1
       - name: Install dependencies (npm)
         run: npm install
       - name: Setup ember-try scenario
         if: matrix.scenario != 'ember-default'
         run: >-
-          ember try:one ember-${{ matrix.scenario }} --skip-cleanup ---
+          yarn ember try:one ember-${{ matrix.scenario }} --skip-cleanup ---
           '[ -z "$EMBER_OPTIONAL_FEATURES" ] || echo "::set-env name=EMBER_OPTIONAL_FEATURES::$EMBER_OPTIONAL_FEATURES"'
       - name: Build
-        run: ember build --environment test
-      - name: Run test (ember-debug)
-        # Due to a bug in ember-cli, running `ember test` with `--path` doesn't set `EMBER_ENV=test`
-        # See https://github.com/ember-cli/ember-cli/issues/8922
-        run: EMBER_ENV=test ember test --filter ember-debug --path dist
+        run: yarn ember build --environment test
       - name: Run test (ember-observer)
         # Due to a bug in ember-cli, running `ember test` with `--path` doesn't set `EMBER_ENV=test`
         # See https://github.com/ember-cli/ember-cli/issues/8922
-        run: EMBER_ENV=test ember test --filter '!ember-debug' --path dist
+        run: EMBER_ENV=test yarn ember test --filter '!ember-debug' --path dist
