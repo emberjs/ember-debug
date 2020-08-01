@@ -3,7 +3,7 @@ import { visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import Ember from 'ember';
 
-module('ember-debug', function(hooks) {
+module('ember-debug | super-rentals', function(hooks) {
   setupApplicationTest(hooks);
 
   test('emberVersion', async function(assert) {
