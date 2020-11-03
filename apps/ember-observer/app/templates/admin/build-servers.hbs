@@ -1,0 +1,28 @@
+<PageLayout @showCategories={{false}}>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Token</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.model as |buildServer|}}
+        <tr class="test-build-server-row">
+          <td>{{buildServer.name}}</td>
+          <td>{{buildServer.token}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <form {{action 'addBuildServer' on='submit'}}>
+    <fieldset>
+      <label for='name'>
+        Name:
+      </label>
+      <Input @type="text" @value={{this.newBuildServerName}} @id="name" class="test-new-build-server-name" />
+      <input type='submit' value='Add' class='test-add-new-build-server'>
+    </fieldset>
+  </form>
+</PageLayout>

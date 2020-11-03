@@ -1,0 +1,252 @@
+$ember-power-select-multiple-selection-background-color: $light-gray;
+$ember-power-select-multiple-option-border-color: $dark-blue-gray;
+$ember-power-select-multiple-option-padding: 4px $base-spacing/2;
+$ember-power-select-highlighted-color: $medium-gray;
+$ember-power-select-selected-background: $blue;
+$ember-power-select-multiple-selection-color: $medium-gray;
+
+.route-admin-review {
+  .review-index {
+    display: none;
+
+    position: fixed;
+    padding: $base-spacing;
+    height: 100%;
+    overflow: auto;
+
+    .list-header {
+      border-bottom: 1px solid $light-gray;
+    }
+
+    .addon-count {
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      margin-left: $base-spacing/2;
+    }
+
+    .review-addon-list {
+      a:hover, a.active {
+        li {
+          background-color: $light-gray;
+        }
+      }
+
+      a.active {
+        font-weight: bold;
+      }
+
+      li {
+        padding: $base-spacing/2 10px;
+
+        .score {
+          margin-right: $base-spacing/2;
+        }
+
+        .review-addon-list-name {
+          vertical-align: middle;
+        }
+
+        .notice {
+          font-size: smaller;
+          color: $light-gray;
+        }
+      }
+    }
+  }
+
+  .addon-container {
+    border-left: $base-border;
+    padding: $base-spacing;
+
+    .addon-area {
+      margin-top: $base-spacing;
+
+      section {
+        margin-top: 1em;
+
+        label {
+          font-weight: bold;
+        }
+
+        .component-toggle-switch {
+          margin-top: $base-spacing/2;
+        }
+
+        .hidden-toggle {
+
+          input[type=checkbox] {
+            background-color: $dark-coral;
+
+            &:checked {
+              background-color: $base-accent-color;
+            }
+          }
+        }
+      }
+
+      .toggles {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        max-height: 10em;
+
+        .component-toggle-switch {
+          margin-right: $base-spacing/2;
+          width: 15em;
+        }
+      }
+
+      .note-input {
+        display: block;
+        font-size: 1rem;
+      }
+
+      .addon-info {
+        font-size: smaller;
+      }
+
+      .readme {
+        max-width: calc(100vw - #{2 * $base-spacing});
+        @include readme-styles();
+      }
+
+      .review-form {
+
+        li {
+          margin-bottom: 1em;
+        }
+
+        .question {
+          margin-bottom: 1em;
+        }
+
+        ul {
+          margin-bottom: 2em;
+        }
+
+        button {
+          display: inline-block;
+          line-height: $base-line-height;
+          margin-bottom: 0.3em;
+          margin-right: 0.5em;
+          outline: none;
+          padding: 0.3em 1em;
+          width: 100%;
+          color: $base-accent-color;
+          background-color: white;
+          border: 1px solid $base-accent-color;
+          font-weight: 300;
+
+          &:hover, &.selected {
+            background-color: $base-accent-color;
+            color: white !important;
+          }
+
+          @include media($small-screen) {
+            margin-bottom: 0;
+            width: auto;
+          }
+        }
+      }
+
+      .latest-review {
+        @include box();
+
+        .review-date {
+          font-size: .8em;
+          color: #999;
+        }
+
+        ol {
+          margin-top: 1em;
+        }
+
+        .no-review {
+          margin-top: .5em;
+          font-size: 1.1em;
+        }
+
+        h6 {
+          margin-bottom: 1em;
+        }
+
+        .questions {
+          li {
+            @include clearfix();
+            margin-bottom: .7em;
+            border-bottom: 1px dotted tint($blue, 50%);
+
+            &:hover {
+              color: $base-accent-color;
+            }
+          }
+
+          .question {
+            float: left;
+          }
+
+          .answer {
+            float: right;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .nav-previous-next {
+      position: fixed;
+      width: calc(100% - 33%);
+      padding: $base-spacing/2 $base-spacing;
+      left: 33%;
+      top: 0;
+      z-index: 3;
+      background-color: $base-background-color;
+
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 1em;
+
+      .previous {
+        text-align: left;
+      }
+
+      .next {
+        text-align: right;
+      }
+
+      @include media($medium-screen) {
+        .nav-detail {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.with-index {
+    .review-index {
+      @include media($medium-screen) {
+        display: block;
+        width: 33%;
+      }
+    }
+
+    .addon-container {
+      @include media($medium-screen) {
+        margin-left: 33%;
+        max-width: 66%;
+      }
+    }
+  }
+
+  .note {
+    font-size: smaller;
+    font-style: italic;
+    margin-top: 0.5em;
+  }
+}
+
+.category-chooser-description {
+  font-size: smaller;
+  color: $medium-gray;
+}

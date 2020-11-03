@@ -1,0 +1,34 @@
+button,
+input[type="submit"] {
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  text-decoration: none;
+
+  @include appearance(none);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+button.button,
+input[type="submit"].button {
+  background-color: $base-button-color;
+  border-radius: $base-border-radius;
+  color: white;
+  font-size: $base-font-size;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0.75em 1em;
+
+  &:hover {
+    background-color: $hover-button-color;
+    color: white;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
