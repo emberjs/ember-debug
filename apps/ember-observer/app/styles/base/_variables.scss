@@ -1,0 +1,165 @@
+// Typography
+$open-sans: 'Open Sans', sans-serif;
+$sans-serif: 'Open Sans';
+$sans-serif-2: $helvetica;
+$serif: $georgia;
+$base-font-family: $open-sans;
+$header-font-family: $open-sans;
+
+// Font Sizes
+$base-font-size: 1em;
+$h1-font-size: $base-font-size * 2.25;
+$h2-font-size: $base-font-size * 2;
+$h3-font-size: $base-font-size * 1.75;
+$h4-font-size: $base-font-size * 1.5;
+$h5-font-size: $base-font-size * 1.25;
+$h6-font-size: $base-font-size;
+
+// Line height
+$base-line-height: 1.5;
+$header-line-height: 1.25;
+
+// Other Sizes
+$base-border-radius: 3px;
+$base-spacing: $base-line-height * 1em;
+$default-spacing: 2rem;
+$base-z-index: 0;
+
+// Colors
+$blue: #2F7498;
+$coral: #E5625C;
+$dark-coral: #D1313D;
+$hay: #F9BF76;
+$purple: #615375;
+
+$dark-blue-gray: shade($blue, 70%);
+
+$dark-gray: #444;
+$medium-gray: shade($blue, 50%); //#999;
+$light-gray: tint($blue, 80%); //#DDD;
+$light-red: #FBE3E4;
+$light-yellow: #FFF6BF;
+$light-green: #E6EFC2;
+
+
+// Background Color
+$base-background-color: tint($blue, 99%);
+
+// Font Colors
+$base-font-color: $dark-gray;
+$base-accent-color: $blue;
+$accent-color: $coral;
+
+// Link Colors
+$base-link-color: $base-accent-color;
+$hover-link-color: darken($base-accent-color, 15);
+$base-button-color: $accent-color;
+$hover-button-color: $dark-coral;
+
+// Flash Colors
+$alert-color: $dark-coral;
+$error-color: $light-red;
+$notice-color: lighten($base-accent-color, 40);
+$success-color: $light-green;
+
+// Border color
+$base-border-color: $light-gray;
+$base-border: 1px solid $base-border-color;
+$base-border-dotted: 1px dotted $base-border-color;
+
+// Forms
+$form-border-color: $base-border-color;
+$form-border-color-hover: darken($base-border-color, 10);
+$form-border-color-focus: $base-accent-color;
+$form-border-radius: $base-border-radius;
+$form-box-shadow: inset 0 1px 3px rgba(black,0.06);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px rgba(darken($form-border-color-focus, 5), 0.7);
+$form-font-size: 1.5em;
+$form-font-family: $base-font-family;
+
+@mixin box {
+  border: 1px solid #d8d8d8;
+  border-radius: 3px 3px 0 0;
+
+  .header {
+    border-bottom: 1px solid #d8d8d8;
+    background-color: #f5f5f5;
+    font-weight: bold;
+    padding: .5rem .75rem;
+    margin-bottom: 0;
+  }
+
+  .contents {
+    padding: 2rem;
+    margin-bottom: 0;
+  }
+}
+
+@mixin readme-styles {
+  @include box();
+
+  h2, h3, h4, h5 {
+    margin: 24px 0 16px 0;
+    font-weight: bold;
+  }
+  h1, h2 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: .3em;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  h5 {
+    font-size: .9rem;
+  }
+  code {
+    background-color: #f7f7f7;
+    padding: .3rem;
+    font-size: 90%;
+  }
+  pre {
+    background-color: #f7f7f7;
+    padding: 16px;
+    overflow: auto;
+    border-radius: 3px;
+    line-height: 1.25rem;
+    code {
+      padding: 0;
+    }
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 6px 13px;
+  }
+  ul, ol {
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: disc;
+    ul {
+      list-style-type: circle;
+      ul {
+        list-style-type: square;
+      }
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  .task-list-item input {
+    margin-left: -1.2em !important;
+  }
+}

@@ -1,0 +1,45 @@
+.categories-show {
+
+  h1 {
+    margin-bottom: .25em;
+  }
+
+  .description {
+    color: #999;
+    font-style: italic;
+  }
+
+  h2 {
+    font-weight: 300;
+  }
+
+  .details {
+    @include clearfix;
+  }
+
+  .addons {
+    @include clearfix;
+    margin-top: 1.5rem;
+  }
+
+  .addon-count {
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .sort-buttons {
+    text-align: right;
+  }
+
+  .category-details {
+    float: left;
+  }
+
+  .sort-controls {
+    float: left;
+
+    @include media($medium-screen) {
+      float: right;
+    }
+  }
+}

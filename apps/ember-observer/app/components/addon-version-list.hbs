@@ -1,0 +1,14 @@
+<ul class="versions test-addon-versions">
+  {{#each this.versionsWithMeta as |version|}}
+    <li>
+      {{#if version.isEmber}}
+        <EmberVersionItem @version={{version.version}} />
+      {{else}}
+        <AddonVersionItem @version={{version.version}} />
+      {{/if}}
+    </li>
+  {{/each}}
+  {{#if this.thereAreHiddenVersions}}
+    <a href="#" {{action "showAllVersions"}}>Show all versions</a>
+  {{/if}}
+</ul>
