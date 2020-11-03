@@ -1,0 +1,36 @@
+.button-select {
+  white-space: nowrap;
+
+  button {
+		display: inline-block;
+		line-height: $base-line-height;
+		margin-bottom: 0.3em;
+		margin-right: -0.26em;
+		outline: none;
+		padding: 0.3em 1em;
+		width: 100%;
+    color: $base-accent-color;
+		background-color: white;
+		border: 1px solid $base-accent-color;
+		font-weight: 300;
+
+		&:not(:first-child) {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+
+		&:not(:last-child) {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		&.selected {
+			background-color: $base-accent-color;
+			color: white !important;
+		}
+
+    margin-bottom: 1em;
+    width: auto;
+
+	}
+}

@@ -1,0 +1,13 @@
+.login {
+  margin-top: 1em;
+
+  form {
+    float: left;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+}

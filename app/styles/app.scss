@@ -1,0 +1,89 @@
+@import "normalize";
+@import "node_modules/bourbon/app/assets/stylesheets/_bourbon";
+@import "node_modules/bourbon-neat/app/assets/stylesheets/_neat";
+@import "base/base";
+@import "font-icons";
+@import "markdown";
+@import "scores";
+@import "footer";
+@import "index";
+@import "admin_index";
+@import "categories_show";
+@import "addons_show";
+@import "addons_correct";
+@import "login";
+@import "addons_index";
+@import "addons-list";
+@import "components/build-result-output";
+@import "components/code-search";
+@import "components/dependency-table";
+@import "components/large-search";
+@import "components/spinner";
+@import "components/toggle-switch";
+@import "maintainers_show";
+@import "not_found";
+@import "button_select";
+@import "stats";
+@import "about_index";
+@import "admin_build_result";
+@import "components/page-layout";
+@import "loading";
+@import "canary_test_results";
+@import "admin_review";
+@import "components/date-nav";
+
+::-ms-clear {
+  display: none;
+}
+
+.container {
+  @include outer-container;
+}
+
+.alert {
+  color: $alert-color;
+}
+
+.official {
+  color: $hay;
+}
+
+.dependency {
+  color: $base-accent-color;
+}
+
+.notice {
+  color: $light-gray;
+  font-size: .75em;
+}
+
+$ember-power-select-number-of-visible-options: 10;
+$ember-power-select-highlighted-background: $light-gray;
+@import "ember-power-select";
+@import 'ember-power-select-typeahead';
+
+.ember-power-select-option {
+  padding: ($base-spacing / 4) ($base-spacing / 4);
+  font-size: 1.25rem;
+}
+
+.ember-power-select-trigger {
+  $trigger-padding: 0.25rem;
+  $trigger-font-size: 1.25rem;
+  padding: $trigger-padding;
+  font-size: $trigger-font-size;
+  $height-with-padding: ($base-line-height * $trigger-font-size) + (2 * $trigger-padding);
+  line-height: $height-with-padding;
+  min-height: $height-with-padding;
+}
+
+.jump-to-full-search {
+  font-style: italic;
+  font-weight: bold;
+  color: black;
+  text-decoration: underline;
+
+  &:hover {
+    color: $dark-gray;
+  }
+}
